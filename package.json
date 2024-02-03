@@ -1,0 +1,56 @@
+{
+  "name": "copyright-add",
+  "displayName": "copyright-add",
+  "description": "Adds a copyright header to new files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onFileSystem:all",
+    "onDidOpenTextDocument"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [{
+      "command": "extension.addCopyrightHeader",
+      "title": "Add Copyright Header"
+    }],
+    "configuration": {
+      "properties": {
+          "copyrightHeader.author": {
+              "type": "string",
+              "default": "Your Name",
+              "description": "Author name for the copyright header"
+          },
+          "copyrightHeader.year": {
+              "type": "string",
+              "default": "${currentYear}",
+              "description": "Year for the copyright header"
+          },
+          "copyrightHeader.rights": {
+              "type": "string",
+              "default": "All rights reserved.",
+              "description": "Rights statement for the copyright header"
+          }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
